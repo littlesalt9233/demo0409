@@ -61,7 +61,7 @@ public class Demo {
         //
         HashMap<String, RoomType> roomMap = filter(roomTypeList, 500,21,60);
         //按照平均价格倒序，取前第21行到第60行房型Id
-        roomMap.keySet().stream().forEach(e -> System.out.println( roomMap.get(e)));
+        roomMap.keySet().forEach(e -> System.out.println( roomMap.get(e)));
 
 
     }
@@ -76,8 +76,8 @@ public class Demo {
     public static HashMap<String, RoomType> filter(List<RoomType> rowData,int avgPrice,int... getRows){
         Map<String, List<RoomType>> collect = rowData.stream().collect(Collectors.groupingBy(RoomType::getHotelId));
         //遍历分组对象
-        Map<String, List<RoomType>> matchMap = new HashMap<String, List<RoomType>>();
-        collect.keySet().stream().forEach(key ->{
+        Map<String, List<RoomType>> matchMap = new HashMap<>();
+        collect.keySet().forEach(key ->{
             //酒店下所有房型高于500
             List<RoomType> roomTypes = collect.get(key);
             boolean allMatch = roomTypes.stream().anyMatch(room -> room.getPrice().compareTo(new BigDecimal(avgPrice)) < 0);
@@ -88,9 +88,9 @@ public class Demo {
         //全部大于平均价格的集合
         Set<String> hotelIds = matchMap.keySet();
         ArrayList<RoomType> allAvgPriceList = new ArrayList<>();
-        hotelIds.stream().forEach( key -> {
+        hotelIds.forEach(key -> {
             List<RoomType> roomTypes = matchMap.get(key);
-            roomTypes.stream().forEach(room -> allAvgPriceList.add(room));
+            allAvgPriceList.addAll(roomTypes);
         });
         //倒序
         List<RoomType> matchRoomTypeList = allAvgPriceList.stream().sorted((a, b) -> b.getPrice().compareTo(a.getPrice())).collect(Collectors.toList());

@@ -1,6 +1,8 @@
 package com.example.test.enums;
 
 
+import java.util.Objects;
+
 /**
  * 订单类型枚举
  */
@@ -44,7 +46,7 @@ public enum OrderBizTypeEnum {
     // 新增方法：根据value获取枚举成员
     public static OrderBizTypeEnum getByValue(String value) {
         for (OrderBizTypeEnum type : values()) {
-            if (type.getOrderType() == value) {
+            if (Objects.equals(type.getOrderType(), value)) {
                 return type;
             }
         }

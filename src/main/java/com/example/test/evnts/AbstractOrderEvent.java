@@ -2,8 +2,6 @@ package com.example.test.evnts;
 
 import com.example.test.enums.OrderBizTypeEnum;
 import com.example.test.enums.OrderStatusEnum;
-import com.example.test.strategy.OrderProcessor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEvent;
 
 /**
@@ -16,12 +14,12 @@ import org.springframework.context.ApplicationEvent;
 public abstract class AbstractOrderEvent extends ApplicationEvent {
 
     /**
-     * 订单业务类型{@ink com.example.test.enums.OrderBizTypeEnum }
+     * 订单业务类型{@link com.example.test.enums.OrderBizTypeEnum }
      * */
     private final OrderBizTypeEnum orderBizTypeEnum;
 
     /**
-     * 订单状态 {@ink com.example.test.enums.OrderStatusEnum }
+     * 订单状态 {@link com.example.test.enums.OrderStatusEnum }
      * */
     private final OrderStatusEnum orderStatusEnum;
 
