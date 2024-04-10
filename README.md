@@ -1,2 +1,2 @@
 # demo0409
-springEvents、Strategy
+基于事件驱动 + 策略模式 实现状态和业务解耦
