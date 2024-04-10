@@ -7,9 +7,7 @@ import com.example.test.evnts.CompletelyOrderEvent;
 import com.example.test.evnts.PayOrderEvent;
 import com.example.test.logAop.TraceLog;
 import com.example.test.model.OrderInfo;
-import com.example.test.service.NotifyService;
 import com.example.test.service.OrderService;
-import com.example.test.service.PayService;
 import com.example.test.strategy.OrderProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -53,11 +51,11 @@ public class OrderStatusMQListener {
 
         orderProcessor.processOrder(bizType,statusEnum);
         switch (statusEnum){
-            case STATUS_1:
+            case s1:
                 //发布事件  创建，待支付执行支付
                 eventPublisher.publishEvent(new PayOrderEvent(bizType,statusEnum,this));
                 break;
-            case STATUS_2:
+            case s2:
                 //发布事件 订单完成
                 eventPublisher.publishEvent(new CompletelyOrderEvent(bizType,statusEnum,this));
                 break;

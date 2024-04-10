@@ -3,11 +3,11 @@ package com.example.test.enums;
 // 状态枚举
 public enum OrderStatusEnum {
     /**状态1*/
-    STATUS_1(1),
+    s1(1),
     /**状态2*/
-    STATUS_2(2);
+    s2(2);
 
-    private int value;
+    private final int value;
 
     OrderStatusEnum(int value) {
         this.value = value;
@@ -25,5 +25,10 @@ public enum OrderStatusEnum {
             }
         }
         throw new IllegalArgumentException("Invalid value: " + value);
+    }
+
+    public static class Name{
+        public static final String s1 = "s1";
+        public static final String s2 = "s2";
     }
 }

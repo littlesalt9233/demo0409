@@ -3,7 +3,6 @@ package com.example.test.strategy;
 import com.example.test.enums.OrderBizTypeEnum;
 
 import com.example.test.enums.OrderStatusEnum;
-import com.example.test.logAop.TraceLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +18,7 @@ import java.util.Map;
 public class OrderProcessor {
 
     @Autowired
-    private Map<String, OrderStrategy> strategies;
+    private Map<String, OrderBizStrategy> strategies;
 
     /**
      *
@@ -27,9 +26,8 @@ public class OrderProcessor {
      * @param orderBizType  业务类型
      * @param orderStatusEnum 订单状态
      */
-    @TraceLog(traceName = "adsadad")
     public void processOrder(OrderBizTypeEnum orderBizType, OrderStatusEnum orderStatusEnum) {
-        OrderStrategy strategy = strategies.get(orderBizType.getStrategy());
+        OrderBizStrategy strategy = strategies.get(orderStatusEnum.name() + orderBizType.getStrategy());
         if (strategy != null) {
             strategy.process(orderStatusEnum);
         } else {

@@ -5,7 +5,6 @@ import com.example.test.enums.OrderStatusEnum;
 import com.example.test.evnts.CompletelyOrderEvent;
 import com.example.test.evnts.PayOrderEvent;
 import com.example.test.strategy.OrderProcessor;
-import org.apache.catalina.core.ApplicationPushBuilder;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,7 +26,7 @@ class TestApplicationTests {
     @Test
     void testOrder() {
         OrderBizTypeEnum visa = OrderBizTypeEnum.VISA;
-        OrderStatusEnum status = OrderStatusEnum.STATUS_1;
+        OrderStatusEnum status = OrderStatusEnum.s1;
         orderProcessor.processOrder(visa,status);
         OrderBizTypeEnum hotel = OrderBizTypeEnum.HOTEL;
         orderProcessor.processOrder(hotel,status);
@@ -44,11 +43,11 @@ class TestApplicationTests {
         OrderStatusEnum status= OrderStatusEnum.getByValue(1);
         OrderBizTypeEnum bizType = OrderBizTypeEnum.getByValue("hotel");
         switch (status){
-            case STATUS_1:
+            case s1:
                 //发布事件  创建，待支付执行支付
                 eventPublisher.publishEvent(new PayOrderEvent(bizType,status,this));
                 break;
-            case STATUS_2:
+            case s2:
                 //发布事件 订单完成
                 eventPublisher.publishEvent(new CompletelyOrderEvent(bizType,status,this));
                 break;

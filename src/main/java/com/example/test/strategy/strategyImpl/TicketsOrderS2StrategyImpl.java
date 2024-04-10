@@ -1,7 +1,11 @@
 package com.example.test.strategy.strategyImpl;
 
+import com.example.test.enums.OrderBizTypeEnum;
 import com.example.test.enums.OrderStatusEnum;
-import com.example.test.strategy.OrderStrategy;
+import com.example.test.logAop.TraceLog;
+import com.example.test.strategy.OrderBizStrategy;
+import org.springframework.stereotype.Component;
+
 /**
  * @Author chenjw
  * @Email chixe9233@163.com
@@ -9,8 +13,10 @@ import com.example.test.strategy.OrderStrategy;
  * @Version 1.0
  * @Desc some description
 */
-public class TicketsOrderStrategyImpl  implements OrderStrategy {
+@Component(OrderStatusEnum.Name.s2 + OrderBizTypeEnum.Name.TICKETS)
+public class TicketsOrderS2StrategyImpl implements OrderBizStrategy {
     @Override
+    @TraceLog(traceName = "HotelOrderStrategyImpl", threadLog = "处理已完成门票订单")
     public void process(OrderStatusEnum orderStatusEnum) {
 //        long payId = -1;
 //        for (int i = 0; i < 3; i++) { // 如果失败有3次重试
