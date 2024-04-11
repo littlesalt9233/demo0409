@@ -3,7 +3,8 @@ package me.example.test.strategy.strategyImpl;
 import me.example.test.enums.OrderBizTypeEnum;
 import me.example.test.enums.OrderStatusEnum;
 import me.example.test.aop.TraceLog;
-import me.example.test.strategy.OrderBizStrategy;
+import me.example.test.evnts.CompletelyOrderEvent;
+import me.example.test.strategy.EventStrategy;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,10 +15,10 @@ import org.springframework.stereotype.Component;
  * @Desc 签证 已完成订单处理方法
  */
 @Component(OrderStatusEnum.Name.s2 + OrderBizTypeEnum.Name.VISA)
-public class VisaOrderS2StrategyImpl implements OrderBizStrategy {
+public class VisaOrderS2StrategyImpl implements EventStrategy<CompletelyOrderEvent> {
     @Override
     @TraceLog(traceName = "VisaOrderS2StrategyImpl", threadLog = "处理完成的visa订单")
-    public void process(OrderStatusEnum orderStatusEnum) {
+    public void process(CompletelyOrderEvent event) {
 
     }
 }

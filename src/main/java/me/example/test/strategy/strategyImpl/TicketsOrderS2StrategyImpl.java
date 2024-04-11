@@ -3,7 +3,8 @@ package me.example.test.strategy.strategyImpl;
 import me.example.test.enums.OrderBizTypeEnum;
 import me.example.test.enums.OrderStatusEnum;
 import me.example.test.aop.TraceLog;
-import me.example.test.strategy.OrderBizStrategy;
+import me.example.test.evnts.CompletelyOrderEvent;
+import me.example.test.strategy.EventStrategy;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,23 +15,11 @@ import org.springframework.stereotype.Component;
  * @Desc some description
 */
 @Component(OrderStatusEnum.Name.s2 + OrderBizTypeEnum.Name.TICKETS)
-public class TicketsOrderS2StrategyImpl implements OrderBizStrategy {
+public class TicketsOrderS2StrategyImpl implements EventStrategy<CompletelyOrderEvent> {
+
     @Override
     @TraceLog(traceName = "HotelOrderStrategyImpl", threadLog = "处理已完成门票订单")
-    public void process(OrderStatusEnum orderStatusEnum) {
-//        long payId = -1;
-//        for (int i = 0; i < 3; i++) { // 如果失败有3次重试
-//            // 信用支付
-//            payId = payService.payOfCredit(orderInfo);
-//            // payId >0 代表支付成功
-//            if (payId > 0) {
-//                break;
-//            }
-//        }
-//        // 如果支付失败关闭订单
-//        if(payId < 0) {
-//            payService.notPayedToClose(orderInfo);
-//        }
-//
+    public void process(CompletelyOrderEvent event) {
+
     }
 }

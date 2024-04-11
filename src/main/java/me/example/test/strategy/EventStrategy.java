@@ -1,6 +1,8 @@
 package me.example.test.strategy;
 
+import lombok.SneakyThrows;
 import me.example.test.enums.OrderStatusEnum;
+import me.example.test.evnts.AbstractEvent;
 
 
 /**
@@ -8,13 +10,13 @@ import me.example.test.enums.OrderStatusEnum;
  * @Email chixe9233@163.com
  * @Date  2024/4/10 11:42
  * @Version 1.0
- * @Desc 订单业务策略
+ * @Desc 事件策略
 */
-public interface OrderBizStrategy {
+public interface EventStrategy<T extends AbstractEvent> {
 
     /**
      *
-     * @param orderStatusEnum 订单状态
+     * @param event 事件
      */
-    void process(OrderStatusEnum orderStatusEnum);
+    void process(T event);
 }

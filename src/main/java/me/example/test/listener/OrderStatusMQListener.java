@@ -1,14 +1,13 @@
 package me.example.test.listener;
 
 
-import me.example.test.enums.OrderBizTypeEnum;
 import me.example.test.enums.OrderStatusEnum;
 import me.example.test.evnts.CompletelyOrderEvent;
 import me.example.test.evnts.PayOrderEvent;
 import me.example.test.aop.TraceLog;
 import me.example.test.model.OrderInfo;
 import me.example.test.service.OrderService;
-import me.example.test.strategy.OrderProcessor;
+import me.example.test.strategy.EventProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 
@@ -30,7 +29,7 @@ public class OrderStatusMQListener {
     private OrderService orderService;
 
     @Autowired
-    private OrderProcessor orderProcessor;
+    private EventProcessor orderProcessor;
 
     @Autowired
     private ApplicationEventPublisher eventPublisher;
@@ -43,23 +42,18 @@ public class OrderStatusMQListener {
     @TraceLog(traceName = "OrderStatusMQListener", threadLog = "OrderStatusMQListener 消费了消息")
     public void consume(String orderNo) {
         final OrderInfo orderInfo = orderService.getOrderInfo(orderNo);
-        // 订单业务类型
-        final String orderBizType = orderInfo.getOrderBizType();
         // 订单状态
         final int status = orderInfo.getStatus();
-
         OrderStatusEnum statusEnum = OrderStatusEnum.getByValue(status);
-        OrderBizTypeEnum bizType = OrderBizTypeEnum.getByValue(orderBizType);
 
-        orderProcessor.processOrder(statusEnum, bizType);
         switch (statusEnum) {
             case s1:
                 //发布事件  创建，待支付执行支付
-                eventPublisher.publishEvent(new PayOrderEvent(statusEnum, bizType, this));
+                eventPublisher.publishEvent(new PayOrderEvent(orderInfo, this));
                 break;
             case s2:
                 //发布事件 订单完成
-                eventPublisher.publishEvent(new CompletelyOrderEvent(statusEnum, bizType, this));
+                eventPublisher.publishEvent(new CompletelyOrderEvent(orderInfo, this));
                 break;
             default: //其他事件
                 break;

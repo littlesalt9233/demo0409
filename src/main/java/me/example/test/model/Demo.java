@@ -1,6 +1,7 @@
 package me.example.test.model;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -9,6 +10,7 @@ import java.util.stream.Collectors;
 public class Demo {
 
 
+    @Setter
     @Getter
     static class RoomType {
 
@@ -17,18 +19,6 @@ public class Demo {
         private BigDecimal price;
 
         public RoomType() {
-        }
-
-        public void setRoomId(String roomId) {
-            this.roomId = roomId;
-        }
-
-        public void setHotelId(String hotelId) {
-            this.hotelId = hotelId;
-        }
-
-        public void setPrice(BigDecimal price) {
-            this.price = price;
         }
 
         @Override

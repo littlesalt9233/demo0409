@@ -1,9 +1,7 @@
 package me.example.test.evnts.listener;
 
-import me.example.test.enums.OrderBizTypeEnum;
-import me.example.test.enums.OrderStatusEnum;
 import me.example.test.evnts.PayOrderEvent;
-import me.example.test.strategy.OrderProcessor;
+import me.example.test.strategy.EventProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
@@ -19,14 +17,12 @@ import org.springframework.stereotype.Component;
 public class PayOrderEventListener implements ApplicationListener<PayOrderEvent> {
 
     @Autowired
-    private OrderProcessor orderProcessor;
+    private EventProcessor<PayOrderEvent> orderProcessor;
 
     @Override
     //适配器模式
     public void onApplicationEvent(PayOrderEvent payOrderEvent) {
         System.out.println("监听器接收待付款订单事件...");
-        OrderBizTypeEnum bizTypeEnum = payOrderEvent.getOrderBizTypeEnum();
-        OrderStatusEnum statusEnum = payOrderEvent.getOrderStatusEnum();
-        orderProcessor.processOrder(statusEnum, bizTypeEnum);
+        orderProcessor.processOrder(payOrderEvent);
     }
 }

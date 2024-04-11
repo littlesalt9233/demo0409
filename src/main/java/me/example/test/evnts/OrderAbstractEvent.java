@@ -13,7 +13,7 @@ import me.example.test.model.OrderInfo;
  * @Desc 订单抽象业务
  */
 @Getter
-public abstract class AbstractOrderEvent extends AbstractEvent<OrderInfo> {
+public abstract class OrderAbstractEvent extends AbstractEvent<OrderInfo> {
 
     /**
      * 需要自己构造事件名称
@@ -21,7 +21,7 @@ public abstract class AbstractOrderEvent extends AbstractEvent<OrderInfo> {
      * @param orderInfo 业务对象
      * @param source    事件对象
      */
-    public AbstractOrderEvent(String eventName, OrderInfo orderInfo, Object source) {
+    public OrderAbstractEvent(String eventName, OrderInfo orderInfo, Object source) {
         super(eventName, orderInfo, source);
     }
 

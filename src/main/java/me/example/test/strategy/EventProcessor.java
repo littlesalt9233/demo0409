@@ -1,5 +1,6 @@
 package me.example.test.strategy;
 
+import lombok.SneakyThrows;
 import me.example.test.enums.OrderBizTypeEnum;
 
 import me.example.test.enums.OrderStatusEnum;
@@ -10,37 +11,32 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 /**
- * 订单策略处理器
+ * 事件处理器
  *
  * @author chenjw
  */
 
 @Component
-public class OrderProcessor {
-
-    @Autowired
-    private Map<String, OrderBizStrategy> strategies;
+public class EventProcessor<T extends AbstractEvent> {
 
     /**
-     * @param orderBizType    业务类型
-     * @param orderStatusEnum 订单状态
-     * @Desc 订单处理器
-     */
-    public void processOrder(OrderStatusEnum orderStatusEnum, OrderBizTypeEnum orderBizType) {
-        OrderBizStrategy strategy = strategies.get(orderStatusEnum.name() + orderBizType.getStrategy());
-        if (strategy != null) {
-            strategy.process(orderStatusEnum);
-        } else {
-            System.out.println("No processing strategy found for the given status and biz type.");
-        }
-    }
+     * 策略上下文
+     * */
+    @Autowired
+    private Map<String, EventStrategy> strategies;
 
-    public void processOrder(AbstractEvent event) {
-        OrderBizStrategy strategy = strategies.get(orderStatusEnum.name() + orderBizType.getStrategy());
+    /**
+     * @Desc 事件处理方法
+     */
+    @SneakyThrows
+    public void processOrder(T event) {
+        //从策略上下文种获取对应的事件策略
+        EventStrategy strategy = strategies.get(event.getEventName());
         if (strategy != null) {
-            strategy.process(orderStatusEnum);
+            //调用策略处理方法
+            strategy.process(event);
         } else {
-            System.out.println("No processing strategy found for the given status and biz type.");
+            throw new RuntimeException("No processing strategy found for the given status and biz type.");
         }
     }
 }

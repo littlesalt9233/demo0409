@@ -3,7 +3,8 @@ package me.example.test.strategy.strategyImpl;
 import me.example.test.enums.OrderBizTypeEnum;
 import me.example.test.enums.OrderStatusEnum;
 import me.example.test.aop.TraceLog;
-import me.example.test.strategy.OrderBizStrategy;
+import me.example.test.evnts.CompletelyOrderEvent;
+import me.example.test.strategy.EventStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Component;
  * @Desc 酒店 完成订单处理方法
  */
 @Component(OrderStatusEnum.Name.s2 + OrderBizTypeEnum.Name.HOTEL)
-public class HotelOrderS2StrategyImpl implements OrderBizStrategy {
+public class HotelOrderS2StrategyImpl implements EventStrategy<CompletelyOrderEvent> {
 
     @Autowired
     private ApplicationEventPublisher eventPublisher;
@@ -24,11 +25,11 @@ public class HotelOrderS2StrategyImpl implements OrderBizStrategy {
     /**
      * 酒店订单处理
      *
-     * @param orderStatusEnum 订单状态
+     * @param event 事件状态
      */
     @Override
     @TraceLog(traceName = "HotelOrderStrategyImpl", threadLog = "进入酒店完成订单处理")
-    public void process(OrderStatusEnum orderStatusEnum) {
+    public void process(CompletelyOrderEvent event) {
         // 酒店订单支付前的检查 ......
         // 信用支付
         // 如果支付失败关闭订单
