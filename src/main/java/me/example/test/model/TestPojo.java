@@ -1,9 +1,12 @@
 package me.example.test.model;
 
 
+import lombok.Getter;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Getter
 @Table(name = "table1")
 public class TestPojo {
     @Id
@@ -17,24 +20,12 @@ public class TestPojo {
         this.status = status;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public Integer getNum() {
-        return num;
-    }
-
     public void setNum(Integer num) {
         this.num = num;
-    }
-
-    public Integer getStatus() {
-        return status;
     }
 
     public void setStatus(Integer status) {

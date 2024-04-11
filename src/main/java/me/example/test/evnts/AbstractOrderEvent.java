@@ -1,5 +1,6 @@
 package me.example.test.evnts;
 
+import lombok.Getter;
 import me.example.test.enums.OrderBizTypeEnum;
 import me.example.test.enums.OrderStatusEnum;
 import org.springframework.context.ApplicationEvent;
@@ -11,16 +12,27 @@ import org.springframework.context.ApplicationEvent;
  * @Version 1.0
  * @Desc 订单抽象业务
  */
+@Getter
 public abstract class AbstractOrderEvent extends ApplicationEvent {
 
     /**
      * 订单业务类型{@link OrderBizTypeEnum }
-     * */
+     *
+     * -- GETTER --
+     *  获取定位业务枚举方法
+     *
+     * @return OrderBizTypeEnum 订单业务枚举
+     */
     private final OrderBizTypeEnum orderBizTypeEnum;
 
     /**
      * 订单状态 {@link OrderStatusEnum }
-     * */
+     *
+     * -- GETTER --
+     *  获取定位业务枚举方法
+     *
+     * @return OrderStatusEnum 订单状态枚举
+     */
     private final OrderStatusEnum orderStatusEnum;
 
     public AbstractOrderEvent(OrderBizTypeEnum orderBizTypeEnum,OrderStatusEnum orderStatusEnum, Object source) {
@@ -28,23 +40,6 @@ public abstract class AbstractOrderEvent extends ApplicationEvent {
         this.orderBizTypeEnum = orderBizTypeEnum;
         this.orderStatusEnum = orderStatusEnum;
     }
-
-    /**
-     * 获取定位业务枚举方法
-     * @return OrderBizTypeEnum 订单业务枚举
-     */
-    public OrderBizTypeEnum getOrderBizTypeEnum() {
-        return this.orderBizTypeEnum;
-    }
-
-    /**
-     * 获取定位业务枚举方法
-     * @return OrderStatusEnum 订单状态枚举
-     */
-    public OrderStatusEnum getOrderStatusEnum() {
-        return this.orderStatusEnum;
-    }
-
 
 
 }

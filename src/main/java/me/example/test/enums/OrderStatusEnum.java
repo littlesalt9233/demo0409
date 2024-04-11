@@ -1,6 +1,9 @@
 package me.example.test.enums;
 
+import lombok.Getter;
+
 // 状态枚举
+@Getter
 public enum OrderStatusEnum {
     /**状态1*/
     s1(1),
@@ -11,10 +14,6 @@ public enum OrderStatusEnum {
 
     OrderStatusEnum(int value) {
         this.value = value;
-    }
-
-    public int getValue() {
-        return value;
     }
 
     // 新增方法：根据value获取枚举成员

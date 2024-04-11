@@ -1,11 +1,14 @@
 package me.example.test.enums;
 
 
+import lombok.Getter;
+
 import java.util.Objects;
 
 /**
  * 订单类型枚举
  */
+@Getter
 public enum OrderBizTypeEnum {
     /**
      * 酒店订单
@@ -30,18 +33,6 @@ public enum OrderBizTypeEnum {
         this.strategy = strategy;
     }
 
-    public String getOrderType() {
-        return orderType;
-    }
-
-    public String getOrderDesc() {
-        return orderDesc;
-    }
-
-
-    public String getStrategy() {
-        return strategy;
-    }
 
     // 新增方法：根据value获取枚举成员
     public static OrderBizTypeEnum getByValue(String value) {

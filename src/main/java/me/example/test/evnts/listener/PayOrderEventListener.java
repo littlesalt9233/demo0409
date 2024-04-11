@@ -22,6 +22,7 @@ public class PayOrderEventListener implements ApplicationListener<PayOrderEvent>
     private OrderProcessor orderProcessor;
 
     @Override
+    //适配器模式
     public void onApplicationEvent(PayOrderEvent payOrderEvent) {
         System.out.println("监听器接收待付款订单事件...");
         OrderBizTypeEnum bizTypeEnum = payOrderEvent.getOrderBizTypeEnum();

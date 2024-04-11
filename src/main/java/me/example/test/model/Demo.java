@@ -1,5 +1,7 @@
 package me.example.test.model;
 
+import lombok.Getter;
+
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -7,6 +9,7 @@ import java.util.stream.Collectors;
 public class Demo {
 
 
+    @Getter
     static class RoomType {
 
         private String roomId;
@@ -16,24 +19,12 @@ public class Demo {
         public RoomType() {
         }
 
-        public String getRoomId() {
-            return roomId;
-        }
-
         public void setRoomId(String roomId) {
             this.roomId = roomId;
         }
 
-        public String getHotelId() {
-            return hotelId;
-        }
-
         public void setHotelId(String hotelId) {
             this.hotelId = hotelId;
-        }
-
-        public BigDecimal getPrice() {
-            return price;
         }
 
         public void setPrice(BigDecimal price) {
