@@ -3,6 +3,7 @@ package me.example.test.strategy;
 import me.example.test.enums.OrderBizTypeEnum;
 
 import me.example.test.enums.OrderStatusEnum;
+import me.example.test.evnts.AbstractEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +27,15 @@ public class OrderProcessor {
      * @Desc 订单处理器
      */
     public void processOrder(OrderStatusEnum orderStatusEnum, OrderBizTypeEnum orderBizType) {
+        OrderBizStrategy strategy = strategies.get(orderStatusEnum.name() + orderBizType.getStrategy());
+        if (strategy != null) {
+            strategy.process(orderStatusEnum);
+        } else {
+            System.out.println("No processing strategy found for the given status and biz type.");
+        }
+    }
+
+    public void processOrder(AbstractEvent event) {
         OrderBizStrategy strategy = strategies.get(orderStatusEnum.name() + orderBizType.getStrategy());
         if (strategy != null) {
             strategy.process(orderStatusEnum);
