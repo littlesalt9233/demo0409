@@ -1,4 +1,4 @@
-package com.example.test.service;
+package me.example.test.service;
 
 public interface TestService {
     void test1();

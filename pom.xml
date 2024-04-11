@@ -8,20 +8,25 @@
         <version>2.5.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
+    <groupId>me.example</groupId>
     <artifactId>test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>test</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
+        <aspectj.version>1.9.7</aspectj.version>
+        <tk.mapper.version>2.0.2</tk.mapper.version>
+        <lombok.version>1.18.20</lombok.version>
+        <springboot.version>2.2.5.RELEASE</springboot.version>
+        <mysql.connect.version>8.0.33</mysql.connect.version>
+        <apache.commons.lang3.version>3.1</apache.commons.lang3.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -32,45 +37,37 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper-spring-boot-starter</artifactId>
-            <version>2.0.2</version>
+            <version>${tk.mapper.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.2.5.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
+            <version>${springboot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.1</version>
+            <version>${apache.commons.lang3.version}</version>
         </dependency>
-
         <!-- AspectJ Runtime -->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>1.9.7</version> <!-- 根据需要选择适当的版本 -->
+            <version>${aspectj.version}</version>
         </dependency>
-
         <!-- AspectJ Weaver for Spring AOP -->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.9.7</version> <!-- 同样需要选择适合的版本 -->
+            <version>${aspectj.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
+            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
 

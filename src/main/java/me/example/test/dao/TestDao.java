@@ -1,6 +1,6 @@
-package com.example.test.dao;
+package me.example.test.dao;
 
-import com.example.test.model.TestPojo;
+import me.example.test.model.TestPojo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.BaseMapper;

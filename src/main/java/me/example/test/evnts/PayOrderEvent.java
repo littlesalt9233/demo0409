@@ -1,7 +1,7 @@
-package com.example.test.evnts;
+package me.example.test.evnts;
 
-import com.example.test.enums.OrderBizTypeEnum;
-import com.example.test.enums.OrderStatusEnum;
+import me.example.test.enums.OrderBizTypeEnum;
+import me.example.test.enums.OrderStatusEnum;
 
 /**
  * @Author chenjw
@@ -13,7 +13,7 @@ import com.example.test.enums.OrderStatusEnum;
 public class PayOrderEvent extends AbstractOrderEvent {
 
 
-    public PayOrderEvent(OrderBizTypeEnum orderBizTypeEnum, OrderStatusEnum orderStatusEnum, Object source) {
-        super(orderBizTypeEnum, orderStatusEnum,source);
+    public PayOrderEvent(OrderStatusEnum orderStatusEnum, OrderBizTypeEnum orderBizTypeEnum, Object source) {
+        super(orderBizTypeEnum, orderStatusEnum, source);
     }
 }

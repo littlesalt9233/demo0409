@@ -1,10 +1,10 @@
-package com.example.test.strategy.strategyImpl;
+package me.example.test.strategy.strategyImpl;
 
-import com.example.test.enums.OrderBizTypeEnum;
-import com.example.test.enums.OrderStatusEnum;
-import com.example.test.evnts.CompletelyOrderEvent;
-import com.example.test.logAop.TraceLog;
-import com.example.test.strategy.OrderBizStrategy;
+import me.example.test.enums.OrderBizTypeEnum;
+import me.example.test.enums.OrderStatusEnum;
+import me.example.test.evnts.CompletelyOrderEvent;
+import me.example.test.aop.TraceLog;
+import me.example.test.strategy.OrderBizStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
@@ -34,7 +34,7 @@ public class HotelOrderS1StrategyImpl implements OrderBizStrategy {
         // 信用支付
         // 如果支付失败关闭订单
         System.out.println("酒店订单支付成功");
-        eventPublisher.publishEvent(new CompletelyOrderEvent(OrderBizTypeEnum.HOTEL, OrderStatusEnum.s2, this));
+        eventPublisher.publishEvent(new CompletelyOrderEvent(OrderStatusEnum.s2, OrderBizTypeEnum.HOTEL, this));
 
 
     }

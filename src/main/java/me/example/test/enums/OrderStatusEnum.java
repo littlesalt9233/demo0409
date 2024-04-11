@@ -1,4 +1,4 @@
-package com.example.test.enums;
+package me.example.test.enums;
 
 // 状态枚举
 public enum OrderStatusEnum {

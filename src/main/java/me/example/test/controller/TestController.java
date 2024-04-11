@@ -1,6 +1,6 @@
-package com.example.test.controller;
+package me.example.test.controller;
 
-import com.example.test.service.TestService;
+import me.example.test.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

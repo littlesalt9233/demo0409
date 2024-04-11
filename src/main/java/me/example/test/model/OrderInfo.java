@@ -1,4 +1,4 @@
-package com.example.test.model;
+package me.example.test.model;
 
 /**
  * 订单类 (方便候选人本地阅读代码, 不需要动)

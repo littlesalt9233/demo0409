@@ -1,6 +1,6 @@
-package com.example.test.service.impl;
+package me.example.test.service.impl;
 
-import com.example.test.service.NotifyService;
+import me.example.test.service.NotifyService;
 
 public class NotifyServiceImpl implements NotifyService {
     @Override

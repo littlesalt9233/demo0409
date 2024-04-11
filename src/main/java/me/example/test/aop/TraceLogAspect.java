@@ -1,4 +1,4 @@
-package com.example.test.logAop;
+package me.example.test.aop;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

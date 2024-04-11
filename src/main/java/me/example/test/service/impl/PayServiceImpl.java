@@ -1,7 +1,7 @@
-package com.example.test.service.impl;
+package me.example.test.service.impl;
 
-import com.example.test.model.OrderInfo;
-import com.example.test.service.PayService;
+import me.example.test.model.OrderInfo;
+import me.example.test.service.PayService;
 
 public class PayServiceImpl implements PayService {
 

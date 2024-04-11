@@ -1,6 +1,7 @@
-package com.example.test.strategy;
+package me.example.test.strategy;
 
-import com.example.test.enums.OrderStatusEnum;
+import me.example.test.enums.OrderStatusEnum;
+
 /**
  * @Author chenjw
  * @Email chixe9233@163.com

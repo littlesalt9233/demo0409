@@ -1,6 +1,6 @@
-package com.example.test.service;
+package me.example.test.service;
 
-import com.example.test.model.OrderInfo;
+import me.example.test.model.OrderInfo;
 
 /**
  * 支付服务类 (方便候选人本地阅读代码, 不需要动)

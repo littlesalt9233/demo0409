@@ -1,10 +1,10 @@
-package com.example.test;
+package me.example.test;
 
-import com.example.test.enums.OrderBizTypeEnum;
-import com.example.test.enums.OrderStatusEnum;
-import com.example.test.evnts.CompletelyOrderEvent;
-import com.example.test.evnts.PayOrderEvent;
-import com.example.test.strategy.OrderProcessor;
+import me.example.test.enums.OrderBizTypeEnum;
+import me.example.test.enums.OrderStatusEnum;
+import me.example.test.evnts.CompletelyOrderEvent;
+import me.example.test.evnts.PayOrderEvent;
+import me.example.test.strategy.OrderProcessor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,14 +22,14 @@ class TestApplicationTests {
 
     /**
      * 策略模式测试
-     * */
+     */
     @Test
     void testOrder() {
         OrderBizTypeEnum visa = OrderBizTypeEnum.VISA;
         OrderStatusEnum status = OrderStatusEnum.s1;
-        orderProcessor.processOrder(visa,status);
+        orderProcessor.processOrder(status, visa);
         OrderBizTypeEnum hotel = OrderBizTypeEnum.HOTEL;
-        orderProcessor.processOrder(hotel,status);
+        orderProcessor.processOrder(status, hotel);
     }
 
     @Autowired
@@ -37,19 +37,19 @@ class TestApplicationTests {
 
     /**
      * spring事件测试
-     * */
+     */
     @Test
     void testSpringEvent() {
-        OrderStatusEnum status= OrderStatusEnum.getByValue(1);
+        OrderStatusEnum status = OrderStatusEnum.getByValue(1);
         OrderBizTypeEnum bizType = OrderBizTypeEnum.getByValue("hotel");
-        switch (status){
+        switch (status) {
             case s1:
                 //发布事件  创建，待支付执行支付
-                eventPublisher.publishEvent(new PayOrderEvent(bizType,status,this));
+                eventPublisher.publishEvent(new PayOrderEvent(status, bizType, this));
                 break;
             case s2:
                 //发布事件 订单完成
-                eventPublisher.publishEvent(new CompletelyOrderEvent(bizType,status,this));
+                eventPublisher.publishEvent(new CompletelyOrderEvent(status,bizType,  this));
                 break;
             default: //其他事件
                 break;

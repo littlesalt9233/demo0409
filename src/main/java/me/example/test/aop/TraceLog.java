@@ -1,4 +1,4 @@
-package com.example.test.logAop;
+package me.example.test.aop;
 
 
 import java.lang.annotation.*;

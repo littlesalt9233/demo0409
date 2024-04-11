@@ -1,7 +1,7 @@
-package com.example.test.evnts;
+package me.example.test.evnts;
 
-import com.example.test.enums.OrderBizTypeEnum;
-import com.example.test.enums.OrderStatusEnum;
+import me.example.test.enums.OrderBizTypeEnum;
+import me.example.test.enums.OrderStatusEnum;
 
 /**
  * @Author chenjw
@@ -10,10 +10,10 @@ import com.example.test.enums.OrderStatusEnum;
  * @Version 1.0
  * @Desc 完成订单事件对象
  */
-public class CompletelyOrderEvent extends AbstractOrderEvent{
+public class CompletelyOrderEvent extends AbstractOrderEvent {
 
 
-    public CompletelyOrderEvent(OrderBizTypeEnum orderBizTypeEnum, OrderStatusEnum orderStatusEnum, Object source) {
+    public CompletelyOrderEvent(OrderStatusEnum orderStatusEnum, OrderBizTypeEnum orderBizTypeEnum, Object source) {
         super(orderBizTypeEnum, orderStatusEnum, source);
     }
 }

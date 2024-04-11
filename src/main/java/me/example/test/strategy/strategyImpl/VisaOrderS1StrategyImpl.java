@@ -1,9 +1,9 @@
-package com.example.test.strategy.strategyImpl;
+package me.example.test.strategy.strategyImpl;
 
-import com.example.test.enums.OrderBizTypeEnum;
-import com.example.test.enums.OrderStatusEnum;
-import com.example.test.logAop.TraceLog;
-import com.example.test.strategy.OrderBizStrategy;
+import me.example.test.enums.OrderBizTypeEnum;
+import me.example.test.enums.OrderStatusEnum;
+import me.example.test.aop.TraceLog;
+import me.example.test.strategy.OrderBizStrategy;
 import org.springframework.stereotype.Component;
 
 /**

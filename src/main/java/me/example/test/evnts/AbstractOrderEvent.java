@@ -1,7 +1,7 @@
-package com.example.test.evnts;
+package me.example.test.evnts;
 
-import com.example.test.enums.OrderBizTypeEnum;
-import com.example.test.enums.OrderStatusEnum;
+import me.example.test.enums.OrderBizTypeEnum;
+import me.example.test.enums.OrderStatusEnum;
 import org.springframework.context.ApplicationEvent;
 
 /**
@@ -14,12 +14,12 @@ import org.springframework.context.ApplicationEvent;
 public abstract class AbstractOrderEvent extends ApplicationEvent {
 
     /**
-     * 订单业务类型{@link com.example.test.enums.OrderBizTypeEnum }
+     * 订单业务类型{@link OrderBizTypeEnum }
      * */
     private final OrderBizTypeEnum orderBizTypeEnum;
 
     /**
-     * 订单状态 {@link com.example.test.enums.OrderStatusEnum }
+     * 订单状态 {@link OrderStatusEnum }
      * */
     private final OrderStatusEnum orderStatusEnum;
 

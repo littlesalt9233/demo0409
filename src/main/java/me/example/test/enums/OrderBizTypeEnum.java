@@ -1,4 +1,4 @@
-package com.example.test.enums;
+package me.example.test.enums;
 
 
 import java.util.Objects;
